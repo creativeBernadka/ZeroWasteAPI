@@ -7,7 +7,7 @@ const fs = require('fs'),
 const app = require('express')();
 const swaggerTools = require('swagger-tools');
 const jsyaml = require('js-yaml');
-const serverPort = 3000;
+const serverPort = process.env.PORT || 3000;
 
 // swaggerRouter configuration
 const options = {
