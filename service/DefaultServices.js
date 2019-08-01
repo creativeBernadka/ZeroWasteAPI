@@ -9,7 +9,7 @@ const query = util.promisify(dbConnection.query).bind(dbConnection);
  * returns List
  **/
 exports.getAllPlaces = function(req, res) {
-    console.log("TUTAJ 1");
+    console.log("GET ALL PLACES");
   dbConnection.query(
       'SELECT places_id, place_name, latitude, longitude, type_of_place FROM places',
       function (err, rows, fields) {
@@ -29,6 +29,7 @@ exports.getAllPlaces = function(req, res) {
  * returns PlaceWithDescription
  **/
 exports.getPlaceDescriptionById = async function(req, res, placeId, dayOfWeek) {
+    console.log("GET PLACE DESCRIPTION")
     let description = {};
     let images = {};
 
