@@ -3,33 +3,7 @@ const {extend} = require('underscore');
 const dbConnection = require("../models/dbConnection");
 const query = util.promisify(dbConnection.query).bind(dbConnection);
 
-/**
- * Get all places
- * Returns all available zero waste places
- * returns List
- **/
-exports.getAllPlaces = function(req, res) {
-    console.log("GET ALL PLACES");
-  dbConnection.query(
-      'SELECT places_id, place_name, latitude, longitude, type_of_place FROM places',
-      function (err, rows, fields) {
-        if (err) throw err;
-        return res.json({
-            places: rows
-          })
-      });
-};
-
-
-/**
- * Find place by ID
- * Returns a single place with its detailed description
- *
- * placeId Long ID of place to return
- * returns PlaceWithDescription
- **/
 exports.getPlaceDescriptionById = async function(req, res, placeId, dayOfWeek) {
-    console.log("GET PLACE DESCRIPTION")
     let description = {};
     let images = {};
 
