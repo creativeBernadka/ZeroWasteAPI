@@ -1,6 +1,5 @@
 'use strict';
 
-const utils = require('../utils/writer.js');
 const getAll = require('../service/getAllPlaces');
 const getDescription = require('../service/getPlacesDescriptionById');
 
