@@ -1,6 +1,6 @@
 const util = require('util');
 const {extend} = require('underscore');
-const dbConnection = require("../models/placesModel");
+const dbConnection = require("../models/dbConnection");
 const query = util.promisify(dbConnection.query).bind(dbConnection);
 
 /**

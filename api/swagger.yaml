@@ -2,9 +2,9 @@
 swagger: "2.0"
 info:
   description: "API made to have simple access to database of zero waste places."
-  version: "0.0.2"
+  version: "0.0.3"
   title: "Places API"
-host: "localhost:3000"
+host: "zero-waste-database.herokuapp.com"
 basePath: "/"
 schemes:
 - "https"
