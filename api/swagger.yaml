@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "API made to have simple access to database of zero waste places."
-  version: "0.0.3"
+  version: "0.0.4"
   title: "Places API"
 host: "zero-waste-database.herokuapp.com"
 basePath: "/"
@@ -50,6 +50,24 @@ paths:
           description: "Invalid ID supplied"
         404:
           description: "Place not found"
+      x-swagger-router-controller: "Controller"
+  /auth:
+    post:
+      summary: "Authentication"
+      description: "Endpoint for authentication"
+      operationId: "authUser"
+      parameters:
+        - login: "login"
+          in: "query"
+          type: "string"
+        - password: "password"
+          in: "query"
+          type: "string"
+      responses:
+        200:
+          description: "successful login"
+        401:
+          description: "unsuccessful login - wrong credentials"
       x-swagger-router-controller: "Controller"
 definitions:
   Place:
