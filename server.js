@@ -2,7 +2,8 @@
 
 const fs = require('fs'),
     path = require('path'),
-    http = require('http');
+    http = require('http'),
+    bodyParser = require('body-parser');
 
 const app = require('express')();
 const swaggerTools = require('swagger-tools');
@@ -34,6 +35,8 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 
     // Serve the Swagger documents and Swagger UI
     app.use(middleware.swaggerUi());
+
+    app.use(bodyParser.json());
 
     // Start the server
     http.createServer(app).listen(serverPort, function () {

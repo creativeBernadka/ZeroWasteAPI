@@ -56,13 +56,13 @@ paths:
       summary: "Authentication"
       description: "Endpoint for authentication"
       operationId: "authUser"
+      consumes:
+        - "application/json"
       parameters:
-        - login: "login"
-          in: "query"
-          type: "string"
-        - password: "password"
-          in: "query"
-          type: "string"
+        - name: "credentials"
+          in: "body"
+          schema:
+            $ref: "#/definitions/Credentials"
       responses:
         200:
           description: "successful login"
@@ -143,3 +143,10 @@ definitions:
       end_hour: "15:00:00"
       type_of_place: "restauracja"
       day_of_week: 1
+  Credentials:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      password:
+        type: "string"
