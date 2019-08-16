@@ -64,9 +64,7 @@ exports.validatePassword = async function (req, res) {
             expiresIn: 120,
             userId: userId,
             isAdmin: isAdmin.toString()
-        }, config.jwt.rsa_key, {
-                    algorithm: 'RS256'
-                });
+        }, config.jwt.hs256_key, {});
 
         res.status(200).json({
             idToken: jwtBearerToken,
