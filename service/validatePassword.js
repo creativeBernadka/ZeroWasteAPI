@@ -60,14 +60,14 @@ exports.validatePassword = async function (req, res) {
             throw (err)
         }
 
-        const key = process.env.hs256_key;//config.jwt.hs256_key;
+        const key = process.env.HS256_KEY;//config.jwt.hs256_key;
         console.log("key  ", key);
 
         const jwtBearerToken = jwt.sign({
             expiresIn: 120,
             userId: userId,
             isAdmin: isAdmin.toString()
-        }, process.env.hs256_key, {});
+        }, key, {});
 
         res.status(200).json({
             idToken: jwtBearerToken,
