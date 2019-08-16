@@ -3,7 +3,7 @@ const dbConnection = require("../models/dbConnection");
 const query = util.promisify(dbConnection.query).bind(dbConnection);
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const config = require("../config");
+// const config = require("../config");
 
 async function verifyUserCredentials (username, password){
 
