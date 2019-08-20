@@ -3,7 +3,8 @@
 const fs = require('fs'),
     path = require('path'),
     http = require('http'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    cors = require('cors');
 
 const app = require('express')();
 const swaggerTools = require('swagger-tools');
@@ -24,6 +25,8 @@ const swaggerDoc = jsyaml.safeLoad(spec);
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 
+    app.use(cors());
+
     // Interpret Swagger resources and attach metadata to request - must be first in swagger-tools middleware chain
     app.use(middleware.swaggerMetadata());
 
@@ -38,11 +41,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 
     app.use(bodyParser.json());
 
-    app.use(function(req, res, next) {
-        res.header("Access-Control-Allow-Origin", process.env.ORIGIN); // update to match the domain you will make the request from
-        res.header("Access-Control-Allow-Headers", "Origin, User-Database-Interaction, application/json, Accept");
-        next();
-    });
+
 
     // Start the server
     http.createServer(app).listen(serverPort, function () {

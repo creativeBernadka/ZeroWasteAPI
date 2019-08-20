@@ -77,17 +77,4 @@ exports.validatePassword = async function (req, res) {
     else {
         res.sendStatus(401);
     }
-    // if (validateEmailAndPassword()) {
-    //     const userId = findUserIdForEmail(email);
-    //
-    //     const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
-    //         algorithm: 'RS256',
-    //         expiresIn: 120,
-    //         subject: userId
-    //     })
-    // }
-    // else {
-    //     // send status 401 Unauthorized
-    //     res.sendStatus(401);
-    // }
 };
